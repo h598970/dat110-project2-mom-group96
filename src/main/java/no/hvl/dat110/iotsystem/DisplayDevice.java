@@ -13,7 +13,17 @@ public class DisplayDevice {
 		
 		System.out.println("Display starting ...");
 		
-		// TODO - START
+		//  - START
+
+		Client c1 = new Client("display", Common.BROKERHOST, Common.BROKERPORT);
+		c1.connect();
+		c1.createTopic(Common.TEMPTOPIC);
+		c1.subscribe(Common.TEMPTOPIC);
+		for(int i =0; i<COUNT; i++){
+			c1.receive();
+		}
+		c1.unsubscribe(Common.TEMPTOPIC);
+		c1.disconnect();
 				
 		// create a client object and use it to
 		
@@ -24,11 +34,11 @@ public class DisplayDevice {
 		// - unsubscribe from the topic
 		// - disconnect from the broker
 		
-		// TODO - END
+		//  - END
 		
 		System.out.println("Display stopping ... ");
 		
-		throw new UnsupportedOperationException(TODO.method());
+		
 		
 	}
 }
